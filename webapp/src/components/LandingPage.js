@@ -44,7 +44,8 @@ function LandingPage() {
                                 </h5>
                                 <br/>
                                 <h5 className="description">
-                                    There are a lot of advantages to car sharing such as reducing the number of vehicles on the
+                                    There are a lot of advantages to car sharing such as reducing the number of vehicles
+                                    on the
                                     road, kilometres driven and overall car ownership. Fewer vehicles on the road
                                     reduces congestion and CO2 emissions going into the atmosphere. It also reduces the
                                     need for additional parking – allowing for the greater expansion of green spaces.
@@ -153,8 +154,8 @@ function LandingPage() {
                                     <CardBody>
                                         <a href="#pablo" onClick={(e) => e.preventDefault()}>
                                             <div className="author">
-                                                <CardTitle tag="h4">Henry Ford</CardTitle>
-                                                <h6 className="card-category">Product Manager</h6>
+                                                <CardTitle tag="h4">Jerry Xiong</CardTitle>
+                                                <h6 className="card-category">Frontend Developer</h6>
                                             </div>
                                         </a>
                                         <p className="card-description text-center">
@@ -209,11 +210,9 @@ function LandingPage() {
                                             </div>
                                         </a>
                                         <p className="card-description text-center">
-                                            The rules have changed.<br/>
-                                            There's a fine line between right and wrong.<br/>
-                                            And, somewhere in the shadows,<br/>
-                                            they send us in to find it.<br/>
-                                            Bravo 6, going dark.<br/>
+                                            A group becomes a team when each member is sure enough of himself and his
+                                            contribution to praise the skill of the others. No one can whistle a
+                                            symphony. It takes an orchestra to play it.
                                         </p>
                                     </CardBody>
                                     <CardFooter className="text-center">
@@ -256,8 +255,8 @@ function LandingPage() {
                                     <CardBody>
                                         <a href="#pablo" onClick={(e) => e.preventDefault()}>
                                             <div className="author">
-                                                <CardTitle tag="h4">Robert Orben</CardTitle>
-                                                <h6 className="card-category">Developer</h6>
+                                                <CardTitle tag="h4">Niels Van Landschoot</CardTitle>
+                                                <h6 className="card-category">Android App Developer</h6>
                                             </div>
                                         </a>
                                         <p className="card-description text-center">
