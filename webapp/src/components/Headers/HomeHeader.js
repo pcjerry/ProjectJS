@@ -34,10 +34,10 @@ function HomeHeader() {
                 <Container>
                     <div className="motto text-center">
                         <h1>Welcome to CarShare</h1>
-                        <h3>Start your journey here.</h3>
+                        <h3>Get to your destination now.</h3>
                         <br />
                         <Button
-                            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                            href="https://www.youtube.com/watch?v=3vkz3VcaoRg&ab_channel=zipcar"
                             className="btn-round mr-1"
                             color="neutral"
                             target="_blank"
@@ -48,12 +48,11 @@ function HomeHeader() {
                         </Button>
                         <Link to="/login">
                         <Button
-
                             className="btn-round"
                             color="neutral"
                             type="button" outline
                         >
-                            Download
+                            Start Now
                         </Button>
                     </Link>
                     </div>

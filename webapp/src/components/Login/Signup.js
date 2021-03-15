@@ -1,7 +1,11 @@
 import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+//import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import { Button, Card, Input, Container, Row, Col, Alert } from "reactstrap";
+import { Form } from "react-bootstrap"
+
+import HomeNavbar from "../Navbars/HomeNavbar";
 
 export default function Signup() {
   const emailRef = useRef()
@@ -31,34 +35,71 @@ export default function Signup() {
     setLoading(false)
   }
 
+
+
+
   return (
-    <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Sign Up</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
-            <Form.Group id="password-confirm">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control type="password" ref={passwordConfirmRef} required />
-            </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
-              Sign Up
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
-        Already have an account? <Link to="/login">Log In</Link>
-      </div>
-    </>
-  )
+      <>
+        {/*<HomeNavbar />*/}
+        <div
+            className="page-header"
+            style={{
+              backgroundImage: "url(" + require("assets/img/login-image.jpg") + ")",
+            }}
+        >
+          <div className="filter" />
+
+          <Container>
+            <Row>
+              <Col className="ml-auto mr-auto" lg="4">
+                <Card className="card-register ml-auto mr-auto">
+                  <Link to="/"><h3 className="title mx-auto">Sign Up</h3></Link>
+
+                  {error && <Alert variant="danger">{error}</Alert>}
+
+                  <Form onSubmit={handleSubmit}>
+                    <Form.Group id="email">
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control placeholder="Email" type="email" ref={emailRef} required />
+                    </Form.Group>
+
+                    <Form.Group id="password">
+                      <Form.Label>Password</Form.Label>
+                      <Form.Control placeholder="Password" type="password" ref={passwordRef} required />
+                    </Form.Group>
+
+                    <Form.Group id="password-confirm">
+                      <Form.Label>Password Confirmation</Form.Label>
+                      <Form.Control placeholder="Confirm Password" type="password" ref={passwordConfirmRef} required />
+                    </Form.Group>
+
+                    <Button disabled={loading} block className="btn-round" color="danger" type="submit">
+                      Sign Up
+                    </Button>
+                  </Form>
+
+                  <div className="forgot">
+                    <Link to="/login">
+                      <Button
+                          className="btn-link"
+                          color="danger"
+                      >
+                        Already have an account? Sign In
+                      </Button>
+                    </Link>
+                  </div>
+
+                </Card>
+              </Col>
+            </Row>
+          </Container>
+
+          <div className="footer register-footer text-center">
+            <h6>
+              © {new Date().getFullYear()} Car Share
+            </h6>
+          </div>
+        </div>
+      </>
+  );
 }

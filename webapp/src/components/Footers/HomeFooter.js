@@ -10,34 +10,33 @@ function HomeFooter() {
                         <ul>
                             <li>
                                 <a
-                                    href="https://www.creative-tim.com?ref=pkr-footer"
+                                    href="https://en.wikipedia.org/wiki/Carsharing"
                                     target="_blank"
                                 >
-                                    Creative Tim
+                                    Car Share
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    href="http://blog.creative-tim.com/?ref=pkr-footer"
+                                    href="https://iiw.kuleuven.be/gent/contact"
                                     target="_blank"
                                 >
-                                    Blog
+                                    Contact
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    href="https://www.creative-tim.com/license?ref=pkr-footer"
+                                    href="https://www.sharecar.co.id/en/pages/terms-and-conditions"
                                     target="_blank"
                                 >
-                                    Licenses
+                                    Terms and Conditions
                                 </a>
                             </li>
                         </ul>
                     </nav>
                     <div className="credits ml-auto">
             <span className="copyright">
-              © {new Date().getFullYear()}, made with{" "}
-                <i className="fa fa-heart heart" /> CarShare
+              © {new Date().getFullYear()} Car Share
             </span>
                     </div>
                 </Row>
