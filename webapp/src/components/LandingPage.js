@@ -197,8 +197,8 @@ function LandingPage() {
                   <CardBody>
                     <a href="#pablo" onClick={(e) => e.preventDefault()}>
                       <div className="author">
-                        <CardTitle tag="h4">Sophie West</CardTitle>
-                        <h6 className="card-category">Designer</h6>
+                        <CardTitle tag="h4">Arne Hellin</CardTitle>
+                        <h6 className="card-category">Backend developer</h6>
                       </div>
                     </a>
                     <p className="card-description text-center">
