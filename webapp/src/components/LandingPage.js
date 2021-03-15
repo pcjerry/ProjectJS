@@ -220,8 +220,7 @@ function LandingPage() {
                                         <Button
                                             className="btn-just-icon btn-neutral"
                                             color="link"
-                                            href="#pablo"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="https://twitter.com/ArneHellin"
                                         >
                                             <i className="fa fa-twitter"/>
                                         </Button>
