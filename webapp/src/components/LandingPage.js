@@ -209,10 +209,11 @@ function LandingPage() {
                                             </div>
                                         </a>
                                         <p className="card-description text-center">
-                                            A group becomes a team when each member is sure enough of
-                                            himself and his contribution to praise the skill of the
-                                            others. No one can whistle a symphony. It takes an
-                                            orchestra to play it.
+                                            The rules have changed.<br/>
+                                            There's a fine line between right and wrong.<br/>
+                                            And, somewhere in the shadows,<br/>
+                                            they send us in to find it.<br/>
+                                            Bravo 6, going dark.<br/>
                                         </p>
                                     </CardBody>
                                     <CardFooter className="text-center">
