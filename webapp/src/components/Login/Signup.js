@@ -27,7 +27,7 @@ export default function Signup() {
       setError("")
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
-      history.push("/dashboard")
+      history.push("/admin")
     } catch {
       setError("Failed to create an account")
     }
@@ -53,23 +53,23 @@ export default function Signup() {
             <Row>
               <Col className="ml-auto mr-auto" lg="4">
                 <Card className="card-register ml-auto mr-auto">
-                  <Link to="/"><h3 className="title mx-auto">Sign Up</h3></Link>
+                  <Link to="/"><h3 className="title mx-auto"> <i className="nc-icon nc-minimal-left" /> Sign Up</h3></Link>
 
                   {error && <Alert variant="danger">{error}</Alert>}
 
                   <Form onSubmit={handleSubmit}>
                     <Form.Group id="email">
-                      <Form.Label>Email</Form.Label>
+                      <Form.Label className="text-white">Email</Form.Label>
                       <Form.Control placeholder="Email" type="email" ref={emailRef} required />
                     </Form.Group>
 
                     <Form.Group id="password">
-                      <Form.Label>Password</Form.Label>
+                      <Form.Label className="text-white">Password</Form.Label>
                       <Form.Control placeholder="Password" type="password" ref={passwordRef} required />
                     </Form.Group>
 
                     <Form.Group id="password-confirm">
-                      <Form.Label>Password Confirmation</Form.Label>
+                      <Form.Label className="text-white">Password Confirmation</Form.Label>
                       <Form.Control placeholder="Confirm Password" type="password" ref={passwordConfirmRef} required />
                     </Form.Group>
 

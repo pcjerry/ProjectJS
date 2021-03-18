@@ -79,12 +79,12 @@ function HomeNavbar() {
                     <Nav navbar>
                         <NavItem>
                             <NavLink to="/login" tag={Link}>
-                                <i className="nc-icon nc-layout-11" /> Sign In
+                                <i className="nc-icon nc-single-02" /> Sign In
                             </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink to="/signup" tag={Link}>
-                                <i className="nc-icon nc-book-bookmark" /> Sign Up
+                                <i className="nc-icon nc-circle-10" /> Sign Up
                             </NavLink>
                         </NavItem>
 

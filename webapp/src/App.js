@@ -9,9 +9,8 @@ import ForgotPassword from "./components/Login/ForgotPassword";
 import UpdateProfile from "./components/Login/UpdateProfile";
 import PrivateRoute from "./components/Login/PrivateRoute"
 
-
 import LandingPage from "./components/LandingPage";
-
+import Admin from "layouts/Admin.js";
 
 function App() {
     return (
@@ -25,6 +24,7 @@ function App() {
                     <Route path="/signup" component={Signup} />
                     <Route path="/login" component={Login} />
                     <Route path="/forgot-password" component={ForgotPassword} />
+                    <Route path="/admin" component={Admin} />
                 </Switch>
             </AuthProvider>
             </Router>

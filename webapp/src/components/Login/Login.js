@@ -22,7 +22,7 @@ export default function Login() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      history.push("/dashboard")
+      history.push("/admin")
     } catch {
       setError("Failed to log in")
     }
@@ -45,18 +45,18 @@ export default function Login() {
             <Row>
               <Col className="ml-auto mr-auto" lg="4">
                 <Card className="card-register ml-auto mr-auto">
-                  <Link to="/"><h3 className="title mx-auto">Sign In</h3></Link>
+                  <Link to="/"><h3 className="title mx-auto"><i className="nc-icon nc-minimal-left" /> Sign In</h3></Link>
 
                   {error && <Alert variant="danger">{error}</Alert>}
 
                   <Form onSubmit={handleSubmit}>
                     <Form.Group id="email">
-                      <Form.Label>Email</Form.Label>
+                      <Form.Label className="text-white">Email</Form.Label>
                       <Form.Control placeholder="Email" type="email"  ref={emailRef} required />
                     </Form.Group>
 
                     <Form.Group id="password">
-                      <Form.Label>Password</Form.Label>
+                      <Form.Label className="text-white">Password</Form.Label>
                       <Form.Control placeholder="Password" type="password" ref={passwordRef} required />
                     </Form.Group>
 

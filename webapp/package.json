@@ -3,16 +3,22 @@
   "version": "1.2.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "chartist": "^0.11.4",
     "classnames": "2.2.6",
     "firebase": "^8.3.0",
     "moment": "2.26.0",
     "node-sass": "4.14.1",
     "nouislider": "14.5.0",
+    "perfect-scrollbar": "^1.5.0",
     "react": "16.13.1",
     "react-bootstrap": "^1.5.2",
     "react-bootstrap-switch": "15.5.3",
+    "react-chartist": "^0.14.4",
     "react-datetime": "2.16.3",
     "react-dom": "16.13.1",
+    "react-google-maps": "^9.4.5",
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
@@ -48,6 +54,7 @@
   },
   "devDependencies": {
     "gulp": "4.0.2",
-    "gulp-append-prepend": "1.0.8"
+    "gulp-append-prepend": "1.0.8",
+    "prop-types": "^15.7.2"
   }
 }

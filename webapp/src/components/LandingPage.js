@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
     Button,
     Card,
@@ -53,14 +54,14 @@ function LandingPage() {
                                     the environment.
                                 </h5>
                                 <br/>
+
                                 <Button
                                     className="btn-round"
                                     color="info"
-                                    href="#pablo"
-                                    onClick={(e) => e.preventDefault()}
                                 >
                                     See Details
                                 </Button>
+
                             </Col>
                         </Row>
                         <br/>
@@ -159,35 +160,33 @@ function LandingPage() {
                                             </div>
                                         </a>
                                         <p className="card-description text-center">
-                                            Teamwork is so important that it is virtually impossible
-                                            for you to reach the heights of your capabilities or make
-                                            the money that you want without becoming very good at it.
+                                            Industrial engineer in the field of connected systems,
+                                            who has designed and programmed the frontend of the website,
+                                            specialised in Reactjs and connection with the databases.
+
                                         </p>
                                     </CardBody>
                                     <CardFooter className="text-center">
                                         <Button
                                             className="btn-just-icon btn-neutral"
                                             color="link"
-                                            href="#pablo"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="https://twitter.com/home"
                                         >
                                             <i className="fa fa-twitter"/>
                                         </Button>
                                         <Button
                                             className="btn-just-icon btn-neutral ml-1"
                                             color="link"
-                                            href="#pablo"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="#https://www.google.com/"
                                         >
                                             <i className="fa fa-google-plus"/>
                                         </Button>
                                         <Button
                                             className="btn-just-icon btn-neutral ml-1"
                                             color="link"
-                                            href="#pablo"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="#https://github.com/pcjerry/ProjectJS"
                                         >
-                                            <i className="fa fa-linkedin"/>
+                                            <i className="fa fa-github" />
                                         </Button>
                                     </CardFooter>
                                 </Card>
@@ -210,9 +209,10 @@ function LandingPage() {
                                             </div>
                                         </a>
                                         <p className="card-description text-center">
-                                            A group becomes a team when each member is sure enough of himself and his
-                                            contribution to praise the skill of the others. No one can whistle a
-                                            symphony. It takes an orchestra to play it.
+                                            Industrial engineer in the field of software engineering,
+                                            focuses on the backend of the website
+                                            as setting up different databases,
+                                            specialised in Springboot, MYSQL.
                                         </p>
                                     </CardBody>
                                     <CardFooter className="text-center">
@@ -226,18 +226,16 @@ function LandingPage() {
                                         <Button
                                             className="btn-just-icon btn-neutral ml-1"
                                             color="link"
-                                            href="#pablo"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="#https://www.google.com/"
                                         >
                                             <i className="fa fa-google-plus"/>
                                         </Button>
                                         <Button
                                             className="btn-just-icon btn-neutral ml-1"
                                             color="link"
-                                            href="#pablo"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="https://github.com/pcjerry/ProjectJS"
                                         >
-                                            <i className="fa fa-linkedin"/>
+                                            <i className="fa fa-github" />
                                         </Button>
                                     </CardFooter>
                                 </Card>
@@ -260,36 +258,33 @@ function LandingPage() {
                                             </div>
                                         </a>
                                         <p className="card-description text-center">
-                                            The strength of the team is each individual member. The
-                                            strength of each member is the team. If you can laugh
-                                            together, you can work together, silence isn’t golden,
-                                            it’s deadly.
+                                            Industrial engineer in the field of software engineering,
+                                            focuses on the android application
+                                            both the frontend and the backend,
+                                            specialised in Android Studio.
                                         </p>
                                     </CardBody>
                                     <CardFooter className="text-center">
                                         <Button
                                             className="btn-just-icon btn-neutral"
                                             color="link"
-                                            href="#pablo"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="#https://twitter.com/home"
                                         >
                                             <i className="fa fa-twitter"/>
                                         </Button>
                                         <Button
                                             className="btn-just-icon btn-neutral ml-1"
                                             color="link"
-                                            href="#pablo"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="#https://www.google.com/"
                                         >
                                             <i className="fa fa-google-plus"/>
                                         </Button>
                                         <Button
                                             className="btn-just-icon btn-neutral ml-1"
                                             color="link"
-                                            href="#pablo"
-                                            onClick={(e) => e.preventDefault()}
+                                            href="https://github.com/pcjerry/ProjectJS"
                                         >
-                                            <i className="fa fa-linkedin"/>
+                                            <i className="fa fa-github" />
                                         </Button>
                                     </CardFooter>
                                 </Card>
