@@ -36,7 +36,7 @@ export default function Signup() {
       await signup(emailRef.current.value, passwordRef.current.value)
       history.push("/admin")
 
-      await db.collection("Users")
+      await db.collection("Users").doc(user.uid)
       //await db.collection(`Users/${user.uid}`)
           .add({
             Email: email,
