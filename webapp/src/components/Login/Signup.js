@@ -4,7 +4,8 @@ import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { Button, Card, Input, Container, Row, Col, Alert } from "reactstrap";
 import { Form } from "react-bootstrap"
-import {auth, createUser, db} from "../../firebase";
+import {auth, db} from "../../firebase";
+import firebase from "firebase/app";
 
 import HomeNavbar from "../Navbars/HomeNavbar";
 
@@ -29,23 +30,24 @@ export default function Signup() {
 
     try {
 
-      const { user } = signup;
+      const { user } = auth.createUserWithEmailAndPassword(email, password)
 
       setError("")
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
       history.push("/admin")
 
-      await db.collection("Users").doc(user.uid)
-      //await db.collection(`Users/${user.uid}`)
-          .add({
+      await db.collection("Users").doc(firebase.auth().currentUser.uid)
+          //await db.collection(`Users/${user.uid}`)
+          .set({
             Email: email,
             Password: password,
             Time: new Date(),
-      })
+          })
 
       setEmail("");
       setPassword("");
+
 
     } catch {
       setError("Failed to create an account")
@@ -119,3 +121,4 @@ export default function Signup() {
       </>
   );
 }
+
