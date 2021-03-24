@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState }from "react";
 import { Link } from "react-router-dom";
+import { db } from "../firebase";
+
 import {
     Button,
     Card,
@@ -28,6 +30,38 @@ function LandingPage() {
             document.body.classList.remove("profile-page");
         };
     });
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+
+    const [loader, setLoader] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setLoader(true);
+
+        db.collection("ContactForm")
+            .add({
+                Name: name,
+                Email: email,
+                Message: message,
+                Time: new Date(),
+            })
+            .then(() => {
+                setLoader(false);
+                alert("Thank you for your kind feedback!");
+            })
+            .catch((error) => {
+                alert(error.message);
+                setLoader(false);
+            });
+
+        setName("");
+        setEmail("");
+        setMessage("");
+    };
+
     return (
         <>
             <HomeNavbar/>
@@ -109,7 +143,7 @@ function LandingPage() {
                                     <div className="description">
                                         <h4 className="info-title">Statistics</h4>
                                         <p>
-                                            Choose from a veriety of many colors resembling sugar
+                                            Choose from a variety of many colors resembling sugar
                                             paper pastels.
                                         </p>
                                         <Button className="btn-link" color="info" href="#pablo">
@@ -292,12 +326,15 @@ function LandingPage() {
                         </Row>
                     </Container>
                 </div>
+
+
+
                 <div className="section landing-section">
                     <Container>
                         <Row>
                             <Col className="ml-auto mr-auto" md="8">
                                 <h2 className="text-center">Keep in touch?</h2>
-                                <Form className="contact-form">
+                                <Form className="contact-form" onSubmit={handleSubmit}>
                                     <Row>
                                         <Col md="6">
                                             <label>Name</label>
@@ -307,9 +344,10 @@ function LandingPage() {
                                                         <i className="nc-icon nc-single-02"/>
                                                     </InputGroupText>
                                                 </InputGroupAddon>
-                                                <Input placeholder="Name" type="text"/>
+                                                <Input placeholder="Name" type="text" value={name} onChange={(e) => setName(e.target.value)}/>
                                             </InputGroup>
                                         </Col>
+
                                         <Col md="6">
                                             <label>Email</label>
                                             <InputGroup>
@@ -318,19 +356,22 @@ function LandingPage() {
                                                         <i className="nc-icon nc-email-85"/>
                                                     </InputGroupText>
                                                 </InputGroupAddon>
-                                                <Input placeholder="Email" type="text"/>
+                                                <Input placeholder="Email" type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
                                             </InputGroup>
                                         </Col>
                                     </Row>
+
                                     <label>Message</label>
                                     <Input
-                                        placeholder="Tell us your thoughts and feelings..."
+                                        placeholder="Tell us what you think about us..."
                                         type="textarea"
                                         rows="4"
+                                        value={message}
+                                        onChange={(e) => setMessage(e.target.value)}
                                     />
                                     <Row>
                                         <Col className="ml-auto mr-auto" md="4">
-                                            <Button className="btn-fill" color="danger" size="lg">
+                                            <Button className="btn-fill" color="danger" size="lg" type="submit">
                                                 Send Message
                                             </Button>
                                         </Col>
@@ -341,6 +382,8 @@ function LandingPage() {
                     </Container>
                 </div>
             </div>
+
+
             <HomeFooter/>
         </>
     );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState}from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -12,7 +12,6 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
-
 import avatar from "assets/img/faces/jerry.jpg";
 
 const styles = {
@@ -49,6 +48,7 @@ export default function UserProfile() {
             </CardHeader>
             <CardBody>
               <GridContainer>
+
                 <GridItem xs={12} sm={12} md={5}>
                   <CustomInput
                     labelText="Company (disabled)"
@@ -61,6 +61,7 @@ export default function UserProfile() {
                     }}
                   />
                 </GridItem>
+
                 <GridItem xs={12} sm={12} md={3}>
                   <CustomInput
                     labelText="Username"
@@ -70,6 +71,7 @@ export default function UserProfile() {
                     }}
                   />
                 </GridItem>
+
                 <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
                     labelText="Email address"
@@ -80,6 +82,7 @@ export default function UserProfile() {
                   />
                 </GridItem>
               </GridContainer>
+
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomInput

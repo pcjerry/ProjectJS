@@ -4,6 +4,7 @@ import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { Button, Card, Input, Container, Row, Col, Alert } from "reactstrap";
 import { Form } from "react-bootstrap"
+import {auth, createUser, db} from "../../firebase";
 
 import HomeNavbar from "../Navbars/HomeNavbar";
 
@@ -16,6 +17,9 @@ export default function Signup() {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   async function handleSubmit(e) {
     e.preventDefault()
 
@@ -24,19 +28,31 @@ export default function Signup() {
     }
 
     try {
+
+      const { user } = signup;
+
       setError("")
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
       history.push("/admin")
+
+      await db.collection("Users")
+      //await db.collection(`Users/${user.uid}`)
+          .add({
+            Email: email,
+            Password: password,
+            Time: new Date(),
+      })
+
+      setEmail("");
+      setPassword("");
+
     } catch {
       setError("Failed to create an account")
     }
 
     setLoading(false)
   }
-
-
-
 
   return (
       <>
@@ -58,9 +74,9 @@ export default function Signup() {
                   {error && <Alert variant="danger">{error}</Alert>}
 
                   <Form onSubmit={handleSubmit}>
-                    <Form.Group id="email">
+                    <Form.Group id="email" >
                       <Form.Label className="text-white">Email</Form.Label>
-                      <Form.Control placeholder="Email" type="email" ref={emailRef} required />
+                      <Form.Control value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email" ref={emailRef} required />
                     </Form.Group>
 
                     <Form.Group id="password">
@@ -70,7 +86,7 @@ export default function Signup() {
 
                     <Form.Group id="password-confirm">
                       <Form.Label className="text-white">Password Confirmation</Form.Label>
-                      <Form.Control placeholder="Confirm Password" type="password" ref={passwordConfirmRef} required />
+                      <Form.Control value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Confirm Password" type="password" ref={passwordConfirmRef} required />
                     </Form.Group>
 
                     <Button disabled={loading} block className="btn-round" color="danger" type="submit">
