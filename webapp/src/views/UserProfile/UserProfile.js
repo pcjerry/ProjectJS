@@ -40,10 +40,11 @@ export default function UserProfile() {
   return (
     <div>
       <GridContainer>
+
         <GridItem xs={12} sm={12} md={8}>
           <Card>
             <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Edit Profile</h4>
+              <h4 className={classes.cardTitleWhite}>Edit profile</h4>
               <p className={classes.cardCategoryWhite}>Complete your profile</p>
             </CardHeader>
             <CardBody>
@@ -154,7 +155,14 @@ export default function UserProfile() {
             </CardFooter>
           </Card>
         </GridItem>
-        <GridItem xs={12} sm={12} md={4}>
+
+      </GridContainer>
+    </div>
+  );
+}
+
+/*
+    <GridItem xs={12} sm={12} md={4}>
           <Card profile>
             <CardAvatar profile>
               <a href="#pablo" onClick={e => e.preventDefault()}>
@@ -162,12 +170,10 @@ export default function UserProfile() {
               </a>
             </CardAvatar>
             <CardBody profile>
-              <h6 className={classes.cardCategory}>CEO / CO-FOUNDER</h6>
-              <h4 className={classes.cardTitle}>Alec Thompson</h4>
+              <h6 className={classes.cardCategory}>Get first name from database</h6>
+              <h4 className={classes.cardTitle}>Get last name from database</h4>
               <p className={classes.description}>
-                Don{"'"}t be scared of the truth because we need to restart the
-                human foundation in truth And I love you like Kanye loves Kanye
-                I love Rick Owens’ bed design but the back is...
+                Here get the description from database
               </p>
               <Button color="primary" round>
                 Follow
@@ -175,7 +181,4 @@ export default function UserProfile() {
             </CardBody>
           </Card>
         </GridItem>
-      </GridContainer>
-    </div>
-  );
-}
+ */

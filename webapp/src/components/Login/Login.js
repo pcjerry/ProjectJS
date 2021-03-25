@@ -22,7 +22,7 @@ export default function Login() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      history.push("/admin")
+      history.push("/admin/maps")
     } catch {
       setError("Failed to log in")
     }
@@ -36,7 +36,7 @@ export default function Login() {
         <div
             className="page-header"
             style={{
-              backgroundImage: "url(" + require("assets/img/login-image.jpg") + ")",
+              backgroundImage: "url(" + require("assets/img/Home3.jpg") + ")",
             }}
         >
           <div className="filter" />

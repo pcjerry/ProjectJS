@@ -92,6 +92,8 @@ function LandingPage() {
                                 <Button
                                     className="btn-round"
                                     color="info"
+                                    href="https://www.enterprisecarshare.com/us/en/faq.html"
+                                    target="_blank"
                                 >
                                     See Details
                                 </Button>
@@ -109,10 +111,10 @@ function LandingPage() {
                                     <div className="description">
                                         <h4 className="info-title">Beautiful Gallery</h4>
                                         <p className="description">
-                                            Spend your time generating new ideas. You don't have to
-                                            think of implementing.
+                                            Check out here our gallery of available cars
+                                            and awesome selfies of our customers
                                         </p>
-                                        <Button className="btn-link" color="info" href="#pablo">
+                                        <Button className="btn-link" color="info" href="#">
                                             See more
                                         </Button>
                                     </div>
@@ -126,10 +128,10 @@ function LandingPage() {
                                     <div className="description">
                                         <h4 className="info-title">New Ideas</h4>
                                         <p>
-                                            Larger, yet dramatically thinner. More powerful, but
-                                            remarkably power efficient.
+                                            Help us to get new ideas to improve our services in the future
+                                            by filling the contact form below
                                         </p>
-                                        <Button className="btn-link" color="info" href="#pablo">
+                                        <Button className="btn-link" color="info" href="#">
                                             See more
                                         </Button>
                                     </div>
@@ -143,10 +145,10 @@ function LandingPage() {
                                     <div className="description">
                                         <h4 className="info-title">Statistics</h4>
                                         <p>
-                                            Choose from a variety of many colors resembling sugar
-                                            paper pastels.
+                                            Who doesn't love statistics, we'll be displaying you the real statistic to
+                                            tell you more about our services
                                         </p>
-                                        <Button className="btn-link" color="info" href="#pablo">
+                                        <Button className="btn-link" color="info" href="#">
                                             See more
                                         </Button>
                                     </div>
@@ -160,10 +162,10 @@ function LandingPage() {
                                     <div className="description">
                                         <h4 className="info-title">Delightful design</h4>
                                         <p>
-                                            Find unique and handmade delightful designs related items
-                                            directly from our sellers.
+                                            Our customer services are here to help,
+                                            we are here to solve all your questions and problems
                                         </p>
-                                        <Button className="btn-link" color="info" href="#pablo">
+                                        <Button className="btn-link" color="info" href="#">
                                             See more
                                         </Button>
                                     </div>

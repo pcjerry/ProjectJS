@@ -24,7 +24,7 @@ function HomeHeader() {
             <div
                 style={{
                     backgroundImage:
-                        "url(" + require("assets/img/daniel-olahh.jpg") + ")",
+                        "url(" + require("assets/img/Home1.jpg") + ")",
                 }}
                 className="page-header"
                 data-parallax={true}

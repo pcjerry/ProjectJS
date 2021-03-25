@@ -62,7 +62,7 @@ export default function Signup() {
         <div
             className="page-header"
             style={{
-              backgroundImage: "url(" + require("assets/img/login-image.jpg") + ")",
+              backgroundImage: "url(" + require("assets/img/Home3.jpg") + ")",
             }}
         >
           <div className="filter" />
