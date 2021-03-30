@@ -34,17 +34,7 @@ export default function Footer(props) {
             </ListItem>
           </List>
         </div>
-        <p className={classes.right}>
-          <span>
-            &copy; {1900 + new Date().getYear()}{" "}
-            <a
-              href="#"
-              className={classes.a}
-            >
-              Car Share
-            </a>
-          </span>
-        </p>
+
       </div>
     </footer>
   );

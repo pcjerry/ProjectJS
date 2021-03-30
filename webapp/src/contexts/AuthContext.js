@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
-import { auth } from "../firebase"
+import { auth, db} from "../firebase"
+//import firebase from "firebase";
+//import getStripe from "../views/Price/getStripe";
 
 const AuthContext = React.createContext()
 

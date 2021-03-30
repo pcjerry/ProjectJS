@@ -7,10 +7,10 @@ import {
 
 const footerStyle = {
   block: {
-    color: "inherit",
+    color: "#ffffff",
     padding: "15px",
     textTransform: "uppercase",
-    borderRadius: "3px",
+    //borderRadius: "3px",
     textDecoration: "none",
     position: "relative",
     display: "block",

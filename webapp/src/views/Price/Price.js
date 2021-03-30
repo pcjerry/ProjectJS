@@ -1,91 +1,198 @@
-/*eslint-disable*/
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
-import AddAlert from "@material-ui/icons/AddAlert";
-// core components
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import Button from "components/CustomButtons/Button.js";
-import SnackbarContent from "components/Snackbar/SnackbarContent.js";
-import Snackbar from "components/Snackbar/Snackbar.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
+import React from 'react';
+import "../../assets/css/bootstrap.min.css"
+import { Button } from 'react-bootstrap';
+import { Container } from "reactstrap";
+import firebase from "firebase/app";
+import { useAuth } from "../../contexts/AuthContext"
+import getStripe from "./getStripe";
+import {auth , db} from "../../firebase";
 
+import './Price.css';
 
-const styles = {
-    cardCategoryWhite: {
-        "&,& a,& a:hover,& a:focus": {
-            color: "rgba(255,255,255,.62)",
-            margin: "0",
-            fontSize: "14px",
-            marginTop: "0",
-            marginBottom: "0"
-        },
-        "& a,& a:hover,& a:focus": {
-            color: "#FFFFFF"
-        }
-    },
-    cardTitleWhite: {
-        color: "#FFFFFF",
-        marginTop: "0px",
-        minHeight: "auto",
-        fontWeight: "300",
-        fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-        marginBottom: "3px",
-        textDecoration: "none",
-        "& small": {
-            color: "#777",
-            fontSize: "65%",
-            fontWeight: "400",
-            lineHeight: "1"
-        }
+    const app = firebase.app;
+
+    async function createCheckoutSession1() {
+        const checkoutSessionRef = await db
+            .collection("customers")
+            .doc(firebase.auth().currentUser.uid)
+            .collection("checkout_sessions")
+            .add({
+                price: "price_1IZcoEJB3PZCBovI2xs8GOBi",
+                success_url: window.location + "/admin/price",
+                cancel_url: window.location+ "/admin/price",
+            })
+
+        checkoutSessionRef.onSnapshot(async (snap) => {
+            const {sessionId} = snap.data()
+            if(sessionId) {
+                const stripe = await getStripe()
+                stripe.redirectToCheckout({ sessionId });
+            }
+        })
     }
-};
 
-const useStyles = makeStyles(styles);
+    async function createCheckoutSession2() {
+        const checkoutSessionRef = await db
+            .collection("customers")
+            .doc(firebase.auth().currentUser.uid)
+            .collection("checkout_sessions")
+            .add({
+                price: "price_1IZcs1JB3PZCBovIPXL3pWQ9",
+                success_url: window.location + "/admin/price",
+                cancel_url: window.location + "/admin/price"
+            })
 
-export default function Price() {
-    const classes = useStyles();
-
-    return (
-        <Card>
-            <CardHeader color="primary">
-                <h4 className={classes.cardTitleWhite}>Price </h4>
-            </CardHeader>
-            <CardBody>
-
+        checkoutSessionRef.onSnapshot(async (snap) => {
+            const {sessionId} = snap.data()
+            if(sessionId) {
+                const stripe = await getStripe()
+                stripe.redirectToCheckout({ sessionId });
+            }
+        })
+    }
 
 
-            </CardBody>
-        </Card>
-    );
+    async function createCheckoutSession3() {
+        const checkoutSessionRef = await db
+            .collection("customers")
+            .doc(firebase.auth().currentUser.uid)
+            .collection("checkout_sessions")
+            .add({
+                price: "price_1IZcsWJB3PZCBovI1uSHvCjK",
+                success_url: window.location + "/admin/price",
+                cancel_url: window.location + "/admin/price",
+            })
+
+        checkoutSessionRef.onSnapshot(async (snap) => {
+            const {sessionId} = snap.data()
+            if(sessionId) {
+                const stripe = await getStripe()
+                stripe.redirectToCheckout({ sessionId });
+            }
+        })
+    }
+
+
+    const goToBillingPortal = async () => {
+        // Call billing portal function
+        const functionRef = app()
+            .functions('europe-west1')
+            .httpsCallable('ext-firestore-stripe-subscriptions-createPortalLink');
+        const { data } = await functionRef({ returnUrl: window.location + "/admin/price" });
+        window.location.assign(data.url);
+    };
+
+    /*
+    export async function goToBillingPortal() {
+    const functionRef = app
+    .functions('us-central1')
+    .httpsCallable('ext-firestore-stripe-subscriptions-createPortalLink');
+
+    const { data } = await functionRef({
+        returnUrl: `${window.location.origin}/account`
+     });
+
+    window.location.assign(data.url);
+    }
+     */
+
+
+class Price extends React.Component {
+
+    render() {
+        return (
+            <div
+                style={{
+                    backgroundImage: "url(" + require("assets/img/Home1.jpg") + ")",
+                }}
+            >
+
+            <div className="maincontainer">
+                <section>
+                    <div class="container py-5">
+
+                        <header class="text-center mb-5 text-white">
+                            <div class="row">
+                                <div class="col-lg-8 mx-auto">
+                                    <h1>Subscription</h1>
+
+                                    <p>Change your subscription here</p>
+                                    <Button onClick={(e) => goToBillingPortal()}> Change Subscription </Button>
+
+                                </div>
+                            </div>
+                        </header>
+
+                        <div class="row text-center align-items-end">
+
+                            <div className="col-lg-4 mb-5 mb-lg-0">
+                                <div className="bg-white p-5 rounded-lg shadow">
+                                    <h1 className="h6 text-uppercase font-weight-bold mb-4">Weekly</h1>
+                                    <h2 className="h1 font-weight-bold">€10<span
+                                        className="text-small font-weight-normal ml-2">/ week</span></h2>
+                                    <div className="custom-separator my-4 mx-auto bg-primary"></div>
+                                    <ul className="list-unstyled my-5 text-small text-left font-weight-normal">
+                                        <li className="mb-3">
+                                            <i className="fa fa-check mr-2 text-primary"></i> Register vehicles
+                                        </li>
+                                        <li className="mb-3 text-muted">
+                                            <i className="fa fa-times mr-2"></i>
+                                            <del>Insurance included</del>
+                                        </li>
+                                        <li className="mb-3 text-muted">
+                                            <i className="fa fa-times mr-2"></i>
+                                            <del>Fuels included</del>
+                                        </li>
+                                    </ul>
+                                    <Button class="btn btn-primary btn-block p-2 shadow rounded-pill" onClick={(e) => createCheckoutSession1()}> Start Weekly </Button>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 mb-5 mb-lg-0">
+                                <div class="bg-white p-5 rounded-lg shadow">
+                                    <h1 class="h6 text-uppercase font-weight-bold mb-4">Monthly</h1>
+                                    <h2 class="h1 font-weight-bold">€30<span class="text-small font-weight-normal ml-2">/ month</span></h2>
+                                    <div class="custom-separator my-4 mx-auto bg-primary"></div>
+                                    <ul class="list-unstyled my-5 text-small text-left font-weight-normal">
+                                        <li class="mb-3">
+                                            <i class="fa fa-check mr-2 text-primary"></i> Register vehicles</li>
+                                        <li class="mb-3">
+                                            <i class="fa fa-check mr-2 text-primary"></i> Insurance included </li>
+                                        <li class="mb-3 text-muted">
+                                            <i class="fa fa-times mr-2"></i>
+                                            <del>Fuels included</del>
+                                        </li>
+                                    </ul>
+                                    <Button class="btn btn-primary btn-block p-2 shadow rounded-pill" onClick={(e) => createCheckoutSession2()}> Start Monthly </Button>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="bg-white p-5 rounded-lg shadow">
+                                    <h1 class="h6 text-uppercase font-weight-bold mb-4">Annual</h1>
+                                    <h2 class="h1 font-weight-bold">€300<span class="text-small font-weight-normal ml-2">/ year</span></h2>
+                                    <div class="custom-separator my-4 mx-auto bg-primary"></div>
+                                    <ul class="list-unstyled my-5 text-small text-left font-weight-normal">
+                                        <li class="mb-3">
+                                            <i class="fa fa-check mr-2 text-primary"></i> Register vehicles</li>
+                                        <li class="mb-3">
+                                            <i class="fa fa-check mr-2 text-primary"></i> Insurance included</li>
+                                        <li class="mb-3">
+                                            <i class="fa fa-check mr-2 text-primary"></i> Fuels included</li>
+                                    </ul>
+                                    <Button class="btn btn-primary btn-block p-2 shadow rounded-pill" onClick={(e) => createCheckoutSession3()}> Start Annual </Button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            </div>
+        )
+    };
 }
+export default Price;
 
 
 /*
-<GridContainer>
-        <GridItem xs={12} sm={12} md={6}>
-            <h5>Pricing Subscription</h5>
-            <br />
-            <SnackbarContent message={"This is a plain notification"} />
-            <SnackbarContent
-                message={"This is a notification with close button."}
-                close
-            />
-            <SnackbarContent
-                message={"This is a notification with close button and icon."}
-                close
-                icon={AddAlert}
-            />
-            <SnackbarContent
-                message={
-                    "This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style."
-                }
-                close
-                icon={AddAlert}
-            />
-        </GridItem>
-    </GridContainer>
  */

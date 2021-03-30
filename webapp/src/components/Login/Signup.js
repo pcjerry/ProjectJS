@@ -18,8 +18,8 @@ export default function Signup() {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  //const [email, setEmail] = useState("");
+  //const [password, setPassword] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -30,27 +30,28 @@ export default function Signup() {
 
     try {
 
-      const { user } = auth.createUserWithEmailAndPassword(email, password)
-
       setError("")
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
       history.push("/admin")
 
-      await db.collection("Users").doc(firebase.auth().currentUser.uid)
-          //await db.collection(`Users/${user.uid}`)
+      /*await db.collection("customers").doc(firebase.auth().currentUser.uid).collection("information")
           .set({
             Email: email,
-            Password: password,
+            //Password: password,
             Time: new Date(),
           })
 
       setEmail("");
-      setPassword("");
+      setPassword("");*/
+
+      //value={email} onChange={(e) => setEmail(e.target.value)}
+
+      //value={password} onChange={(e) => setPassword(e.target.value)}
 
 
     } catch {
-      setError("Failed to create an account")
+      setError("Failed to create an account, try another one")
     }
 
     setLoading(false)
@@ -78,8 +79,9 @@ export default function Signup() {
                   <Form onSubmit={handleSubmit}>
                     <Form.Group id="email" >
                       <Form.Label className="text-white">Email</Form.Label>
-                      <Form.Control value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email" ref={emailRef} required />
+                      <Form.Control placeholder="Email" type="email" ref={emailRef} required />
                     </Form.Group>
+
 
                     <Form.Group id="password">
                       <Form.Label className="text-white">Password</Form.Label>
@@ -88,7 +90,7 @@ export default function Signup() {
 
                     <Form.Group id="password-confirm">
                       <Form.Label className="text-white">Password Confirmation</Form.Label>
-                      <Form.Control value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Confirm Password" type="password" ref={passwordConfirmRef} required />
+                      <Form.Control  placeholder="Confirm Password" type="password" ref={passwordConfirmRef} required />
                     </Form.Group>
 
                     <Button disabled={loading} block className="btn-round" color="danger" type="submit">
@@ -118,6 +120,7 @@ export default function Signup() {
             </h6>
           </div>
         </div>
+
       </>
   );
 }

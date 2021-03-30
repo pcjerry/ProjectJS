@@ -57,33 +57,63 @@ export default function TypographyPage() {
   return (
     <Card>
       <CardHeader color="primary">
-        <h4 className={classes.cardTitleWhite}>Review</h4>
+        <h4 className={classes.cardTitleWhite}>FAQ</h4>
         <p className={classes.cardCategoryWhite}>
-          Review by our customers
+          Frequently Asked Questions
         </p>
       </CardHeader>
       <CardBody>
 
         <div className={classes.typo}>
-          <div className={classes.note}>Paragraph</div>
+          <div className={classes.note}>What is car sharing?</div>
           <p>
-            I will be the leader of a company that ends up being worth billions
-            of dollars, because I got the answers. I understand culture. I am
-            the nucleus. I think that’s a responsibility that I have, to push
-            possibilities, to show people, this is the level that things could
-            be at.
+            Car sharing is a membership based program where, once you join, you can rent a vehicle 24/7. Cars are parked at a dedicated spot in a lot close to where you live and work. Members can rent a vehicle for an hour, a day, or overnight.
           </p>
         </div>
 
         <div className={classes.typo}>
-          <div className={classes.note}>Quote</div>
-          <Quote
-            text="I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at."
-            author=" Kanye West, Musician"
-          />
+          <div className={classes.note}>How much does it cost?</div>
+          <p>
+            You can choose between an monthly or annual membership fee. Rates vary by city, location and time.
+          </p>
+        </div>
+
+        <div className={classes.typo}>
+          <div className={classes.note}>Where are the cars located?</div>
+          <p>
+            Cars are parked in designated spots on the street or in a lot, close to where you live and work. Locations vary by city.
+          </p>
+        </div>
+
+        <div className={classes.typo}>
+          <div className={classes.note}>What do we benefit from?</div>
+          <p>
+            Car sharing is the perfect complement for your on-the-go lifestyle. We know you could use a variety of public transportation options such as taking the train, the bus, walking, or biking. But, sometimes you need a car. Vehicles are parked in designated spots for 24/7 access.
+          </p>
+        </div>
+
+        <div className={classes.typo}>
+          <div className={classes.note}>How do I become a member?</div>
+          <p>
+            It’s easy to get started!
+            But first you need to meet the requirements below:
+
+            Valid driver’s license
+            Valid major credit card in your name
+          </p>
         </div>
 
       </CardBody>
     </Card>
   );
 }
+
+/*
+<div className={classes.typo}>
+          <div className={classes.note}>Quote</div>
+          <Quote
+            text="I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at."
+            author=" Kanye West, Musician"
+          />
+        </div>
+ */

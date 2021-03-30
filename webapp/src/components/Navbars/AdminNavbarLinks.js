@@ -71,7 +71,8 @@ export default function AdminNavbarLinks() {
 
   return (
     <div>
-      <div className={classes.searchWrapper}>
+
+      {/*<div className={classes.searchWrapper}>
         <CustomInput
           formControlProps={{
             className: classes.margin + " " + classes.search
@@ -86,9 +87,9 @@ export default function AdminNavbarLinks() {
         <Button color="white" aria-label="edit" justIcon round>
           <Search />
         </Button>
-      </div>
+      </div>*/}
 
-      <Button
+      {/*<Button
         color={window.innerWidth > 959 ? "transparent" : "white"}
         justIcon={window.innerWidth > 959}
         simple={!(window.innerWidth > 959)}
@@ -99,7 +100,7 @@ export default function AdminNavbarLinks() {
         <Hidden mdUp implementation="css">
           <p className={classes.linkText}>Dashboard</p>
         </Hidden>
-      </Button>
+      </Button>*/}
 
 
       <div className={classes.manager}>
@@ -112,7 +113,7 @@ export default function AdminNavbarLinks() {
           onClick={handleClickProfile}
           className={classes.buttonLink}
         >
-          <Person className={classes.icons} />
+          <Person className={classes.icons} style={{ color: "#ffffff" }} />
           <Hidden mdUp implementation="css">
             <p className={classes.linkText}>Profile</p>
           </Hidden>
@@ -141,20 +142,6 @@ export default function AdminNavbarLinks() {
                 <ClickAwayListener onClickAway={handleCloseProfile}>
                   <MenuList role="menu">
 
-                    <MenuItem
-                      onClick={handleCloseProfile}
-                      className={classes.dropdownItem}
-                    >
-                      Profile
-                    </MenuItem>
-
-                    <MenuItem
-                      onClick={handleCloseProfile}
-                      className={classes.dropdownItem}
-                    >
-                      Settings
-                    </MenuItem>
-
                     <Divider light />
                     <MenuItem
                         className={classes.dropdownItem}
@@ -174,6 +161,21 @@ export default function AdminNavbarLinks() {
   );
 }
 
+/*
+  <MenuItem
+      onClick={handleCloseProfile}
+      className={classes.dropdownItem}
+    >
+      Profile
+    </MenuItem>
+
+    <MenuItem
+      onClick={handleCloseProfile}
+      className={classes.dropdownItem}
+    >
+      Settings
+  </MenuItem>
+ */
 
 
 /* <strong>Email:</strong> {currentUser.email}

@@ -63,8 +63,8 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/review",
-    name: "Review",
+    path: "/FAQ",
+    name: "FAQ",
     icon: LibraryBooks,
     component: Typography,
     layout: "/admin"

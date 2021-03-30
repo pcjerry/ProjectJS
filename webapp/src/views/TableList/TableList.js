@@ -45,26 +45,25 @@ export default function TableList() {
   const classes = useStyles();
   return (
     <GridContainer>
+
       <GridItem xs={12} sm={12} md={12}>
-        <Card plain>
-          <CardHeader plain color="primary">
-            <h4 className={classes.cardTitleWhite}>
-              Table
-            </h4>
+        <Card>
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}>History</h4>
             <p className={classes.cardCategoryWhite}>
-              Here is your history
+              History of past activities
             </p>
           </CardHeader>
           <CardBody>
             <Table
-              tableHeaderColor="primary"
-              tableHead={["ID", "Car", "Country", "City", "Duration"]}
-              tableData={[
-                ["1", "Toyota", "Belgium", "Gent", "1hours"],
-                ["2", "Volvo", "Belgium", "Aalst", "3hours"],
-                ["3", "Mercedes", "Belgium", "Brussels", "5hours"],
-                ["4", "Tesla", "Belgium", "Brugge", "30mins"]
-              ]}
+                tableHeaderColor="primary"
+                tableHead={["ID", "Car", "Country", "City", "Duration"]}
+                tableData={[
+                  ["1", "Toyota", "Belgium", "Gent", "1hours"],
+                  ["2", "Volvo", "Belgium", "Aalst", "3hours"],
+                  ["3", "Mercedes", "Belgium", "Brussels", "5hours"],
+                  ["4", "Tesla", "Belgium", "Brugge", "30mins"]
+                ]}
             />
           </CardBody>
         </Card>
@@ -72,3 +71,6 @@ export default function TableList() {
     </GridContainer>
   );
 }
+
+
+

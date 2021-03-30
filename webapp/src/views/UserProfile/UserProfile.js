@@ -1,4 +1,4 @@
-import React, {useState}from "react";
+/*import React, {useState}from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -12,7 +12,11 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
-import avatar from "assets/img/faces/jerry.jpg";
+import avatar from "assets/img/faces/ProfileLogo1.PNG";
+import {auth, db} from "../../firebase";
+import firebase from "firebase";
+import {Input, Form} from "reactstrap";
+import {useAuth} from "../../contexts/AuthContext";
 
 const styles = {
   cardCategoryWhite: {
@@ -37,6 +41,60 @@ const useStyles = makeStyles(styles);
 
 export default function UserProfile() {
   const classes = useStyles();
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [country, setCountry] = useState("");
+  const [license, setLicence] = useState("");
+  const [NIN, setNIN] = useState("");
+  const [info, setInfo] = useState("");
+
+  const [loader, setLoader] = useState(false);
+
+  //async function handleSubmit() {
+
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+    setLoader(true);
+
+    db.collection("customers")
+        .doc(firebase.auth().currentUser.uid)
+        .collection("information")
+        .add({
+          FirstName: firstName,
+          LastName: lastName,
+          City: city,
+          PostalCode: postalCode,
+          Country: country,
+          License: license,
+          NationalInsuranceNumber: NIN,
+          Info: info,
+
+        })
+        .then(() => {
+          setLoader(false);
+          alert("Your profile has been updated");
+        })
+        .catch((error) => {
+          alert(error.message);
+          setLoader(false);
+        });
+
+    setFirstName("");
+    setLastName("");
+    setCity("");
+    setPostalCode("");
+    setCountry("");
+    setLicence("");
+    setNIN("");
+    setInfo("");
+
+  };
+
+
   return (
     <div>
       <GridContainer>
@@ -44,125 +102,137 @@ export default function UserProfile() {
         <GridItem xs={12} sm={12} md={8}>
           <Card>
             <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Edit profile</h4>
+              <h4 className={classes.cardTitleWhite}>Update profile</h4>
               <p className={classes.cardCategoryWhite}>Complete your profile</p>
             </CardHeader>
-            <CardBody>
-              <GridContainer>
 
-                <GridItem xs={12} sm={12} md={5}>
-                  <CustomInput
-                    labelText="Company (disabled)"
-                    id="company-disabled"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                    inputProps={{
-                      disabled: true
-                    }}
-                  />
-                </GridItem>
-
-                <GridItem xs={12} sm={12} md={3}>
-                  <CustomInput
-                    labelText="Username"
-                    id="username"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="Email address"
-                    id="email-address"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-
+            <CardBody >
+              <Form onSubmit={handleSubmit}>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="First Name"
-                    id="first-name"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
+                  <Input
                     labelText="Last Name"
-                    id="last-name"
                     formControlProps={{
                       fullWidth: true
                     }}
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+
+
+
+                </GridItem>
+                <GridItem xs={12} sm={12} md={6}>
+                  <Input
+                    labelText="Last Name"
+                    id="lastName"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                   />
                 </GridItem>
               </GridContainer>
+
               <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
+                  <Input
                     labelText="City"
                     id="city"
                     formControlProps={{
                       fullWidth: true
                     }}
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
+                  <Input
+                      labelText="Postal Code"
+                      id="postalCode"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                      type="text"
+                      value={postalCode}
+                      onChange={(e) => setPostalCode(e.target.value)}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={4}>
+                  <Input
                     labelText="Country"
                     id="country"
                     formControlProps={{
                       fullWidth: true
                     }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="Postal Code"
-                    id="postal-code"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
+                    type="text"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
                   />
                 </GridItem>
               </GridContainer>
+
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={6}>
+                  <Input
+                      labelText="Driver license"
+                      id="license"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                      type="text"
+                      value={license}
+                      onChange={(e) => setLicence(e.target.value)}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={6}>
+                  <Input
+                      labelText="National Insurance number"
+                      id="NIN"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                      type="text"
+                      value={NIN}
+                      onChange={(e) => setNIN(e.target.value)}
+                  />
+                </GridItem>
+              </GridContainer>
+
+
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
-                  <InputLabel style={{ color: "#AAAAAA" }}>About me</InputLabel>
-                  <CustomInput
-                    labelText="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."
-                    id="about-me"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                    inputProps={{
-                      multiline: true,
-                      rows: 5
-                    }}
+
+                  <Input
+                      labelText="Extra information"
+                      id="info"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                      inputProps={{
+                        multiline: true,
+                        rows: 4
+                      }}
+                      type="text"
+                      value={info}
+                      onChange={(e) => setInfo(e.target.value)}
                   />
                 </GridItem>
               </GridContainer>
+
+              <Button color="primary" type="submit" >Update Profile</Button>
+            </Form>
             </CardBody>
-            <CardFooter>
-              <Button color="primary">Update Profile</Button>
-            </CardFooter>
           </Card>
         </GridItem>
 
-      </GridContainer>
-    </div>
-  );
-}
 
-/*
-    <GridItem xs={12} sm={12} md={4}>
+
+        <GridItem xs={12} sm={12} md={4}>
           <Card profile>
             <CardAvatar profile>
               <a href="#pablo" onClick={e => e.preventDefault()}>
@@ -175,10 +245,247 @@ export default function UserProfile() {
               <p className={classes.description}>
                 Here get the description from database
               </p>
-              <Button color="primary" round>
-                Follow
-              </Button>
+
             </CardBody>
           </Card>
         </GridItem>
- */
+
+      </GridContainer>
+    </div>
+  );
+}*/
+
+
+
+import React, {useState} from 'react';
+import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import {auth, db} from "../../firebase";
+import firebase from "firebase";
+import {useAuth} from "../../contexts/AuthContext";
+
+const UserProfile = (props) => {
+
+  const [email, setEmail] = useState("");
+  const [tel, setTel] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [country, setCountry] = useState("");
+  const [date, setDate] = useState("");
+  const [license, setLicence] = useState("");
+  const [NIN, setNIN] = useState("");
+  const [info, setInfo] = useState("");
+
+  const [loader, setLoader] = useState(false);
+
+  //async function handleSubmit() {
+
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+    setLoader(true);
+
+    db.collection("customers")
+        .doc(firebase.auth().currentUser.uid)
+        .collection("information")
+        .add({
+          Email: email,
+          Tel: tel,
+          FirstName: firstName,
+          LastName: lastName,
+          City: city,
+          PostalCode: postalCode,
+          Country: country,
+          Date: date,
+          License: license,
+          NationalInsuranceNumber: NIN,
+          Info: info,
+
+        })
+        .then(() => {
+          setLoader(false);
+          alert("Your profile has been updated");
+        })
+        .catch((error) => {
+          alert(error.message);
+          setLoader(false);
+        });
+
+    setEmail("");
+    setTel("");
+    setFirstName("");
+    setLastName("");
+    setCity("");
+    setPostalCode("");
+    setCountry("");
+    setDate("");
+    setLicence("");
+    setNIN("");
+    setInfo("");
+
+  };
+  return (
+      <Form onSubmit={handleSubmit}>
+
+        <Row form>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="Email" className="text-white">Email</Label>
+              <Input
+                  type="email"
+                  name="email"
+                  id="Email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+              />
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="Tel" className="text-white">Tel nr</Label>
+              <Input
+                  type="text"
+                  name="tel"
+                  id="Tel"
+                  placeholder="Tel"
+                  value={tel}
+                  onChange={(e) => setTel(e.target.value)}
+              />
+            </FormGroup>
+          </Col>
+        </Row>
+
+          <Row form>
+              <Col md={6}>
+                  <FormGroup>
+                      <Label for="First Name" className="text-white">First Name</Label>
+                      <Input
+                          type="text"
+                          name="firstName"
+                          id="firstName"
+                          placeholder="First Name"
+                          value={firstName}
+                          onChange={(e) => setFirstName(e.target.value)}
+                      />
+                  </FormGroup>
+              </Col>
+              <Col md={6}>
+                  <FormGroup>
+                      <Label for="Last Name" className="text-white">Last Name</Label>
+                      <Input
+                          type="text"
+                          name="lastName"
+                          id="lastName"
+                          placeholder="Last Name"
+                          value={lastName}
+                          onChange={(e) => setLastName(e.target.value)}
+                      />
+                  </FormGroup>
+              </Col>
+          </Row>
+
+          <Row form>
+              <Col md={4}>
+                  <FormGroup>
+                      <Label for="City" className="text-white">City</Label>
+                      <Input
+                          type="text"
+                          name="city"
+                          id="city"
+                          placeholder="City"
+                          value={city}
+                          onChange={(e) => setCity(e.target.value)}
+                      />
+                  </FormGroup>
+              </Col>
+              <Col md={4}>
+                  <FormGroup>
+                      <Label for="Postal Code" className="text-white">Postal Code</Label>
+                      <Input
+                          type="text"
+                          name="postalCode"
+                          id="postalCode"
+                          placeholder="Postal Code"
+                          value={postalCode}
+                          onChange={(e) => setPostalCode(e.target.value)}
+                      />
+                  </FormGroup>
+              </Col>
+              <Col md={4}>
+                  <FormGroup>
+                      <Label for="Country" className="text-white">Country</Label>
+                      <Input
+                          type="text"
+                          name="country"
+                          id="country"
+                          placeholder="Country"
+                          value={country}
+                          onChange={(e) => setCountry(e.target.value)}
+                      />
+                  </FormGroup>
+              </Col>
+          </Row>
+
+
+          <Row form>
+              <Col md={4}>
+                  <FormGroup>
+                      <Label for="Date" className="text-white">Date of Birth </Label>
+                      <Input
+                          type="date"
+                          name="date"
+                          id="Date"
+                          placeholder="Date of Birth"
+                          value={date}
+                          onChange={(e) => setDate(e.target.value)}
+                      />
+                  </FormGroup>
+              </Col>
+              <Col md={4}>
+                  <FormGroup>
+                      <Label for="License" className="text-white">Driver License</Label>
+                      <Input
+                          type="text"
+                          name="license"
+                          id="license"
+                          placeholder="Driver Licence"
+                          value={license}
+                          onChange={(e) => setLicence(e.target.value)}
+                      />
+                  </FormGroup>
+              </Col>
+              <Col md={4}>
+                  <FormGroup>
+                      <Label for="NIN" className="text-white">National Insurance Number</Label>
+                      <Input
+                          type="text"
+                          name="NIN"
+                          id="NIN"
+                          placeholder="National Insurance Number"
+                          value={NIN}
+                          onChange={(e) => setNIN(e.target.value)}
+                      />
+                  </FormGroup>
+              </Col>
+          </Row>
+
+
+          <FormGroup>
+              <Label for="info" className="text-white">Meer informatie</Label>
+              <Input
+                  type="textarea"
+                  name="info"
+                  id="info"
+                  value={info}
+                  onChange={(e) => setInfo(e.target.value)}
+              />
+          </FormGroup>
+
+        <Button type="submit" color="danger" >Update Profile</Button>
+      </Form>
+  );
+}
+
+export default UserProfile;

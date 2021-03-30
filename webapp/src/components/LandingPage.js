@@ -160,7 +160,7 @@ function LandingPage() {
                                         <i className="nc-icon nc-sun-fog-29"/>
                                     </div>
                                     <div className="description">
-                                        <h4 className="info-title">Delightful design</h4>
+                                        <h4 className="info-title">Support</h4>
                                         <p>
                                             Our customer services are here to help,
                                             we are here to solve all your questions and problems
