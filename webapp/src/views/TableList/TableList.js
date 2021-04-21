@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -8,6 +8,8 @@ import Table from "components/Table/Table.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 const styles = {
   cardCategoryWhite: {
@@ -38,14 +40,30 @@ const styles = {
     }
   }
 };
-
 const useStyles = makeStyles(styles);
 
 export default function TableList() {
   const classes = useStyles();
+
+
+  firebase.auth().currentUser.getIdToken(true).then(function (idToken) {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + idToken);
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:8080/private/history", requestOptions)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+  })
+
   return (
     <GridContainer>
-
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">

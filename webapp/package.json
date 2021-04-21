@@ -8,8 +8,8 @@
     "@stripe/stripe-js": "^1.13.2",
     "chartist": "^0.11.4",
     "classnames": "2.2.6",
+    "cors": "^2.8.5",
     "firebase": "^8.3.0",
-    "firebase-tools": "^9.8.0",
     "moment": "2.26.0",
     "node-sass": "4.14.1",
     "nouislider": "14.5.0",
@@ -55,6 +55,8 @@
     "typescript": "3.9.5"
   },
   "devDependencies": {
+    "@protobufjs/fetch": "^1.1.0",
+    "axios": "^0.21.1",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
     "prop-types": "^15.7.2"

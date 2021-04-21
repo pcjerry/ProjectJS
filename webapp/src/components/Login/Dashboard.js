@@ -3,6 +3,7 @@ import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
+
 export default function Dashboard() {
   const [error, setError] = useState("")
   const { currentUser, logout } = useAuth()
@@ -10,7 +11,6 @@ export default function Dashboard() {
 
   async function handleLogout() {
     setError("")
-
     try {
       await logout()
       history.push("/login")
@@ -36,6 +36,8 @@ export default function Dashboard() {
           Log Out
         </Button>
       </div>
+
     </>
   )
 }
+

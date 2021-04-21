@@ -5,8 +5,6 @@ import { Link, useHistory } from "react-router-dom"
 import { Button, Card, Input, Container, Row, Col, Alert } from "reactstrap";
 import { Form } from "react-bootstrap"
 
-import HomeNavbar from "../Navbars/HomeNavbar";
-
 export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
@@ -32,7 +30,6 @@ export default function Login() {
 
   return (
       <>
-        {/*<HomeNavbar />*/}
         <div
             className="page-header"
             style={{
