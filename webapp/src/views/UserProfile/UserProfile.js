@@ -478,6 +478,7 @@ const UserProfile = (props) => {
                   type="textarea"
                   name="info"
                   id="info"
+                  placeholder="Meer Informatie"
                   value={info}
                   onChange={(e) => setInfo(e.target.value)}
               />
