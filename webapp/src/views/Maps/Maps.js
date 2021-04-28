@@ -18,7 +18,7 @@ export default function Maps(props) {
   function apiGet() {
 
     var requestOptions = {
-      method: 'POST',
+      method: 'GET',
       redirect: 'follow'
     };
 

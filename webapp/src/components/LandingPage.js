@@ -114,9 +114,6 @@ function LandingPage() {
                                             Check out here our gallery of available cars
                                             and awesome selfies of our customers
                                         </p>
-                                        <Button className="btn-link" color="info" href="#">
-                                            See more
-                                        </Button>
                                     </div>
                                 </div>
                             </Col>
@@ -131,9 +128,6 @@ function LandingPage() {
                                             Help us to get new ideas to improve our services in the future
                                             by filling the contact form below
                                         </p>
-                                        <Button className="btn-link" color="info" href="#">
-                                            See more
-                                        </Button>
                                     </div>
                                 </div>
                             </Col>
@@ -148,9 +142,6 @@ function LandingPage() {
                                             Who doesn't love statistics, we'll be displaying you the real statistic to
                                             tell you more about our services
                                         </p>
-                                        <Button className="btn-link" color="info" href="#">
-                                            See more
-                                        </Button>
                                     </div>
                                 </div>
                             </Col>
@@ -165,9 +156,6 @@ function LandingPage() {
                                             Our customer services are here to help,
                                             we are here to solve all your questions and problems
                                         </p>
-                                        <Button className="btn-link" color="info" href="#">
-                                            See more
-                                        </Button>
                                     </div>
                                 </div>
                             </Col>
