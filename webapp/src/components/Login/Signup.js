@@ -37,10 +37,10 @@ export default function Signup() {
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
 
+        //Email Error with Stripe
       db.collection("customers")
           .doc(firebase.auth().currentUser.uid)
           .collection("information")
-
           .add({
             Email: "",
             Tel: "",
