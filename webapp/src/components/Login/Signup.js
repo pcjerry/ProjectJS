@@ -10,6 +10,9 @@ import firebase from "firebase/app";
 import HomeNavbar from "../Navbars/HomeNavbar";
 
 export default function Signup() {
+
+  const { currentUser }  = useAuth()
+
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
@@ -33,22 +36,26 @@ export default function Signup() {
       setError("")
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
+
+      db.collection("customers")
+          .doc(firebase.auth().currentUser.uid)
+          .collection("information")
+
+          .add({
+            Email: "",
+            Tel: "",
+            FirstName: "",
+            LastName: "",
+            City: "",
+            PostalCode: "",
+            Country: "",
+            Date: "",
+            License: "",
+            NationalInsuranceNumber: "",
+            Info: "",
+    });
+
       history.push("/admin")
-
-      /*await db.collection("customers").doc(firebase.auth().currentUser.uid).collection("information")
-          .set({
-            Email: email,
-            //Password: password,
-            Time: new Date(),
-          })
-
-      setEmail("");
-      setPassword("");*/
-
-      //value={email} onChange={(e) => setEmail(e.target.value)}
-
-      //value={password} onChange={(e) => setPassword(e.target.value)}
-
 
     } catch {
       setError("Failed to create an account, try another one")

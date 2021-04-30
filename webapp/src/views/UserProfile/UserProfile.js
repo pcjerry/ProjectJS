@@ -265,6 +265,8 @@ import {useAuth} from "../../contexts/AuthContext";
 
 const UserProfile = (props) => {
 
+  const { currentUser }  = useAuth()
+
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -277,9 +279,16 @@ const UserProfile = (props) => {
   const [NIN, setNIN] = useState("");
   const [info, setInfo] = useState("");
 
+
+
   const [loader, setLoader] = useState(false);
 
   //async function handleSubmit() {
+    function getEmail() {
+        firebase.auth().onAuthStateChanged(function (user) {
+            const emailuser = user.email;
+        });
+    }
 
   const handleSubmit = (e) => {
 
@@ -289,6 +298,7 @@ const UserProfile = (props) => {
     db.collection("customers")
         .doc(firebase.auth().currentUser.uid)
         .collection("information")
+
         .add({
           Email: email,
           Tel: tel,
@@ -325,6 +335,7 @@ const UserProfile = (props) => {
     setInfo("");
 
   };
+
   return (
       <Form onSubmit={handleSubmit}>
 
