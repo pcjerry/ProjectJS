@@ -33,7 +33,7 @@ function HomeHeader() {
                 <div className="filter" />
                 <Container>
                     <div className="motto text-center">
-                        <h1>Welcome to CarShare</h1>
+                        <h1>Welcome to Car Share</h1>
                         <h3>Get to your destination now.</h3>
                         <br />
                         <Button

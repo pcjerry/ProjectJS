@@ -1,5 +1,4 @@
 import React, { useState }from "react";
-import { Link } from "react-router-dom";
 import { db } from "../firebase";
 
 import {
@@ -111,8 +110,8 @@ function LandingPage() {
                                     <div className="description">
                                         <h4 className="info-title">Beautiful Gallery</h4>
                                         <p className="description">
-                                            Check out here our gallery of available cars
-                                            and awesome selfies of our customers
+                                            Check out our gallery of all the available cars
+                                            and awesome selfies from our customers
                                         </p>
                                     </div>
                                 </div>
@@ -126,7 +125,7 @@ function LandingPage() {
                                         <h4 className="info-title">New Ideas</h4>
                                         <p>
                                             Help us to get new ideas to improve our services in the future
-                                            by filling the contact form below
+                                            by filling out the contact form below
                                         </p>
                                     </div>
                                 </div>
@@ -139,8 +138,7 @@ function LandingPage() {
                                     <div className="description">
                                         <h4 className="info-title">Statistics</h4>
                                         <p>
-                                            Who doesn't love statistics, we'll be displaying you the real statistic to
-                                            tell you more about our services
+                                            Who doesn't love statistics? We will be displaying your statistic after using our services!
                                         </p>
                                     </div>
                                 </div>
